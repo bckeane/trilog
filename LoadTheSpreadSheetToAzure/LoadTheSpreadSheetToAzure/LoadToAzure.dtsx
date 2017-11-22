@@ -1,0 +1,1236 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/22/2017 10:42:52 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SGST040047JADAA"
+  DTS:CreatorName="YNHH\KEANEBR3"
+  DTS:DTSID="{87977691-E399-4979-9943-B19FCFEA5714}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="LoadToAzure"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{9910F0A3-31A2-43CA-8A2F-B6600FF82C6C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Azure Tri Database]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{60079535-0649-42D5-A519-22F018313F19}"
+      DTS:ObjectName="Azure Tri Database">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=n7ye9qfqvy.database.windows.net;User ID=tri;Initial Catalog=tri;Application Name=SSIS-LoadToAzure-{60079535-0649-42D5-A519-22F018313F19}n7ye9qfqvy.database.windows.net.tri.tri;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7GGLp/QT90aKDOIgXPTHSgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACe6SL+eC/CW/re/4ZJuEljAAAAAASAAACgAAAAEAAAAOm+mYNB+a2KDoPreU1z9z8YAAAAmYqKJoJh2vVg40XHoXMNbFqu/wwrF7hCFAAAAHYcnDQiihM8BS85FfAAF2c/XMLG</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TriHistory]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{73D34C98-94F3-48E4-BE96-35C436D3735F}"
+      DTS:ObjectName="TriHistory">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=H:\Tri\TriHistory.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Tri Log"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E2031A50-6C5D-4074-BE65-4C124047F699}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tri Log">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Tri Log\Load Stage Table"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{42694F92-55F7-481B-B95C-7765E071BD9D}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Stage Table"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Tri Log\Load Stage Table\ADO NET Destination"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+                  name="ADO NET Destination"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The Destination database table name."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."excel_stg"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                      expressionType="Notify"
+                      name="BatchSize">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                      expressionType="Notify"
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                      expressionType="Notify"
+                      name="UseBulkInsertWhenPossible">true</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Connections[IDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Azure Tri Database]"
+                      connectionManagerRefId="Package.ConnectionManagers[Azure Tri Database]"
+                      description="Managed connection manager"
+                      name="IDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ADO NET Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[log_id]"
+                          cachedDataType="r8"
+                          cachedName="log_id"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[log_id]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[log_id]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Date]"
+                          cachedDataType="date"
+                          cachedName="Date"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Date]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Date]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[WeekDay]"
+                          cachedDataType="date"
+                          cachedName="WeekDay"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[WeekDay]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[WeekDay]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[sport]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="sport"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[sport]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[sport]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Distance]"
+                          cachedDataType="r8"
+                          cachedName="Distance"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Distance]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Distance]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[HR]"
+                          cachedDataType="r8"
+                          cachedName="HR"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[HR]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[HR]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Mi]"
+                          cachedDataType="r8"
+                          cachedName="Mi"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Mi]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Mi]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[sec]"
+                          cachedDataType="r8"
+                          cachedName="sec"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[sec]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[sec]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Time]"
+                          cachedDataType="date"
+                          cachedName="Time"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Time]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Time]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Pace]"
+                          cachedDataType="date"
+                          cachedName="Pace"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Pace]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Pace]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Equip]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Equip"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Equip]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Equip]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[course]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="course"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[course]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[course]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[MPH]"
+                          cachedDataType="r8"
+                          cachedName="MPH"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[MPH]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[MPH]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[avg_hr]"
+                          cachedDataType="r8"
+                          cachedName="avg_hr"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[avg_hr]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[avg_hr]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[weather]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="weather"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[weather]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[weather]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[notes]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="notes"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[notes]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[notes]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[M Pred Even]"
+                          cachedDataType="date"
+                          cachedName="M Pred Even"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[M Pred Even]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[M Pred Even]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[M Pred +2]"
+                          cachedDataType="date"
+                          cachedName="M Pred +2"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[M Pred +2]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[M Pred +2]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Rank]"
+                          cachedDataType="r8"
+                          cachedName="Rank"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Rank]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Rank]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Year]"
+                          cachedDataType="r8"
+                          cachedName="Year"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Year]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Year]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Month]"
+                          cachedDataType="r8"
+                          cachedName="Month"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Month]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Month]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[yyyymm]"
+                          cachedDataType="r8"
+                          cachedName="yyyymm"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[yyyymm]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[yyyymm]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Week]"
+                          cachedDataType="r8"
+                          cachedName="Week"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Week]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Week]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Rest]"
+                          cachedDataType="r8"
+                          cachedName="Rest"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Rest]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Rest]" />
+                        <inputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DOM]"
+                          cachedDataType="r8"
+                          cachedName="DOM"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DOM]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[DOM]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[log_id]"
+                          dataType="r8"
+                          name="log_id" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Date]"
+                          dataType="dbTimeStamp"
+                          name="Date" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[WeekDay]"
+                          dataType="wstr"
+                          length="255"
+                          name="WeekDay" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[sport]"
+                          dataType="wstr"
+                          length="255"
+                          name="sport" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Distance]"
+                          dataType="r8"
+                          name="Distance" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[HR]"
+                          dataType="r8"
+                          name="HR" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Mi]"
+                          dataType="r8"
+                          name="Mi" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[sec]"
+                          dataType="r8"
+                          name="sec" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Time]"
+                          dataType="dbTimeStamp"
+                          name="Time" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Pace]"
+                          dataType="dbTimeStamp"
+                          name="Pace" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Equip]"
+                          dataType="wstr"
+                          length="255"
+                          name="Equip" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[course]"
+                          dataType="wstr"
+                          length="255"
+                          name="course" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[MPH]"
+                          dataType="r8"
+                          name="MPH" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[avg_hr]"
+                          dataType="r8"
+                          name="avg_hr" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[weather]"
+                          dataType="wstr"
+                          length="255"
+                          name="weather" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[notes]"
+                          dataType="wstr"
+                          length="255"
+                          name="notes" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[M Pred Even]"
+                          dataType="dbTimeStamp"
+                          name="M Pred Even" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[M Pred +2]"
+                          dataType="dbTimeStamp"
+                          name="M Pred +2" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Rank]"
+                          dataType="r8"
+                          name="Rank" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Year]"
+                          dataType="r8"
+                          name="Year" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Month]"
+                          dataType="r8"
+                          name="Month" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[yyyymm]"
+                          dataType="r8"
+                          name="yyyymm" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Week]"
+                          dataType="wstr"
+                          length="255"
+                          name="Week" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Rest]"
+                          dataType="r8"
+                          name="Rest" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[DOM]"
+                          dataType="r8"
+                          name="DOM" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Bar (Pace)]"
+                          dataType="wstr"
+                          length="255"
+                          name="Bar (Pace)" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ADO NET Destination Error Output"
+                      synchronousInputId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tri Log\Load Stage Table\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tri Log\Load Stage Table\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Tri Log\Load Stage Table\Excel Source"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Excel Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">TriHistory$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Tri Log\Load Stage Table\Excel Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[TriHistory]"
+                      connectionManagerRefId="Package.ConnectionManagers[TriHistory]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[log_id]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[log_id]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[log_id]"
+                          name="log_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Date]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Date]"
+                          name="Date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[WeekDay]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[WeekDay]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[WeekDay]"
+                          name="WeekDay"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[sport]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[sport]"
+                          length="255"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[sport]"
+                          name="sport"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Distance]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Distance]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Distance]"
+                          name="Distance"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[HR]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[HR]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[HR]"
+                          name="HR"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Mi]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Mi]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Mi]"
+                          name="Mi"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[sec]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[sec]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[sec]"
+                          name="sec"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Time]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Time]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Time]"
+                          name="Time"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Pace]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Pace]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Pace]"
+                          name="Pace"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Equip]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Equip]"
+                          length="255"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Equip]"
+                          name="Equip"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[course]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[course]"
+                          length="255"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[course]"
+                          name="course"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[MPH]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[MPH]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[MPH]"
+                          name="MPH"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[avg_hr]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[avg_hr]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[avg_hr]"
+                          name="avg_hr"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[weather]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[weather]"
+                          length="255"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[weather]"
+                          name="weather"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[notes]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[notes]"
+                          length="255"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[notes]"
+                          name="notes"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[IM Pred]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[IM Pred]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[IM Pred]"
+                          name="IM Pred"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Half IM Pred]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Half IM Pred]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Half IM Pred]"
+                          name="Half IM Pred"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[M Pred Even]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[M Pred Even]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[M Pred Even]"
+                          name="M Pred Even"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[M Pred +2]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[M Pred +2]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[M Pred +2]"
+                          name="M Pred +2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Half Pred Even]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Half Pred Even]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Half Pred Even]"
+                          name="Half Pred Even"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Half Pred +2]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Half Pred +2]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Half Pred +2]"
+                          name="Half Pred +2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Rank]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rank]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Rank]"
+                          name="Rank"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Year]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Year]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Year]"
+                          name="Year"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Month]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Month]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Month]"
+                          name="Month"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[yyyymm]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[yyyymm]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[yyyymm]"
+                          name="yyyymm"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Week]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Week]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Week]"
+                          name="Week"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Rest]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rest]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Rest]"
+                          name="Rest"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[DOM]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[DOM]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[DOM]"
+                          name="DOM"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Other Pred]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Other Pred]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[Other Pred]"
+                          name="Other Pred"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[CEM]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[CEM]"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].Columns[CEM]"
+                          name="CEM"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[log_id]"
+                          dataType="r8"
+                          name="log_id" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date]"
+                          dataType="date"
+                          name="Date" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[WeekDay]"
+                          dataType="date"
+                          name="WeekDay" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[sport]"
+                          dataType="wstr"
+                          length="255"
+                          name="sport" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Distance]"
+                          dataType="r8"
+                          name="Distance" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[HR]"
+                          dataType="r8"
+                          name="HR" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Mi]"
+                          dataType="r8"
+                          name="Mi" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[sec]"
+                          dataType="r8"
+                          name="sec" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Time]"
+                          dataType="date"
+                          name="Time" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Pace]"
+                          dataType="date"
+                          name="Pace" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Equip]"
+                          dataType="wstr"
+                          length="255"
+                          name="Equip" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[course]"
+                          dataType="wstr"
+                          length="255"
+                          name="course" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[MPH]"
+                          dataType="r8"
+                          name="MPH" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[avg_hr]"
+                          dataType="r8"
+                          name="avg_hr" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[weather]"
+                          dataType="wstr"
+                          length="255"
+                          name="weather" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[notes]"
+                          dataType="wstr"
+                          length="255"
+                          name="notes" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[IM Pred]"
+                          dataType="date"
+                          name="IM Pred" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Half IM Pred]"
+                          dataType="date"
+                          name="Half IM Pred" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[M Pred Even]"
+                          dataType="date"
+                          name="M Pred Even" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[M Pred +2]"
+                          dataType="date"
+                          name="M Pred +2" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Half Pred Even]"
+                          dataType="date"
+                          name="Half Pred Even" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Half Pred +2]"
+                          dataType="date"
+                          name="Half Pred +2" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rank]"
+                          dataType="r8"
+                          name="Rank" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Year]"
+                          dataType="r8"
+                          name="Year" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Month]"
+                          dataType="r8"
+                          name="Month" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[yyyymm]"
+                          dataType="r8"
+                          name="yyyymm" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Week]"
+                          dataType="r8"
+                          name="Week" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rest]"
+                          dataType="r8"
+                          name="Rest" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[DOM]"
+                          dataType="r8"
+                          name="DOM" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Other Pred]"
+                          dataType="date"
+                          name="Other Pred" />
+                        <externalMetadataColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output].ExternalColumns[CEM]"
+                          dataType="r8"
+                          name="CEM" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[log_id]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[log_id]"
+                          name="log_id" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Date]"
+                          dataType="date"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Date]"
+                          name="Date" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[WeekDay]"
+                          dataType="date"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[WeekDay]"
+                          name="WeekDay" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[sport]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[sport]"
+                          name="sport" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Distance]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Distance]"
+                          name="Distance" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[HR]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[HR]"
+                          name="HR" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Mi]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Mi]"
+                          name="Mi" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[sec]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[sec]"
+                          name="sec" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Time]"
+                          dataType="date"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Time]"
+                          name="Time" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Pace]"
+                          dataType="date"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Pace]"
+                          name="Pace" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Equip]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Equip]"
+                          name="Equip" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[course]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[course]"
+                          name="course" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[MPH]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[MPH]"
+                          name="MPH" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[avg_hr]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[avg_hr]"
+                          name="avg_hr" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[weather]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[weather]"
+                          name="weather" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[notes]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[notes]"
+                          name="notes" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[IM Pred]"
+                          dataType="date"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[IM Pred]"
+                          name="IM Pred" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Half IM Pred]"
+                          dataType="date"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Half IM Pred]"
+                          name="Half IM Pred" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[M Pred Even]"
+                          dataType="date"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[M Pred Even]"
+                          name="M Pred Even" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[M Pred +2]"
+                          dataType="date"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[M Pred +2]"
+                          name="M Pred +2" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Half Pred Even]"
+                          dataType="date"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Half Pred Even]"
+                          name="Half Pred Even" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Half Pred +2]"
+                          dataType="date"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Half Pred +2]"
+                          name="Half Pred +2" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Rank]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Rank]"
+                          name="Rank" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Year]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Year]"
+                          name="Year" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Month]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Month]"
+                          name="Month" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[yyyymm]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[yyyymm]"
+                          name="yyyymm" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Week]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Week]"
+                          name="Week" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Rest]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Rest]"
+                          name="Rest" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[DOM]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[DOM]"
+                          name="DOM" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Other Pred]"
+                          dataType="date"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[Other Pred]"
+                          name="Other Pred" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[CEM]"
+                          dataType="r8"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[CEM]"
+                          name="CEM" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Tri Log\Load Stage Table.Paths[Excel Source Output]"
+                  endId="Package\Tri Log\Load Stage Table\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  name="Excel Source Output"
+                  startId="Package\Tri Log\Load Stage Table\Excel Source.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Tri Log\Truncate Stage Table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{22DE2C24-420D-4B9E-819E-F2E60DD9F030}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Stage Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{60079535-0649-42D5-A519-22F018313F19}"
+              SQLTask:SqlStatementSource="truncate table excel_stg" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Tri Log.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{BCB16223-B2C9-45BC-9992-FF1AE0A19577}"
+          DTS:From="Package\Tri Log\Truncate Stage Table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Tri Log\Load Stage Table" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Tri Log\Load Stage Table"
+          TopLeft="27,154" />
+        <EdgeLayout
+          Id="Package\Tri Log.PrecedenceConstraints[Constraint]"
+          TopLeft="109.25,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,93"
+              Start="0,0"
+              End="0,85.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,85.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Tri Log\Truncate Stage Table"
+          TopLeft="21,19" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="205,251"
+          Size="205,294"
+          Id="Package\Tri Log"
+          TopLeft="116,52" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Tri Log\Load Stage Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Tri Log\Load Stage Table\Excel Source"
+          TopLeft="251,71" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Tri Log\Load Stage Table\ADO NET Destination"
+          TopLeft="289,221" />
+        <EdgeLayout
+          Id="Package\Tri Log\Load Stage Table.Paths[Excel Source Output]"
+          TopLeft="320.5,113">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58,108"
+              Start="0,0"
+              End="58,100.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50"
+                    Point2="0,54"
+                    Point3="4,54" />
+                  <mssgle:LineSegment
+                    End="54,54" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54,54"
+                    Point2="58,54"
+                    Point3="58,58" />
+                  <mssgle:LineSegment
+                    End="58,100.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tri Log\Load Stage Table\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tri Log\Load Stage Table\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
