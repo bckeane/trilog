@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadToAzure"
   DTS:PackageType="5"
-  DTS:VersionBuild="48"
-  DTS:VersionGUID="{C1B628B6-32CD-4631-B77D-16EBA61D82B9}">
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{9607158E-5BD0-4EA7-B0B0-5E1AA6153DDA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAu7SntGp4Vk+H1AKJplxzMAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACUAOZATCNjOoAWs1mMBBqJAAAAAASAAACgAAAAEAAAAGfnVvxKxOK1Dif57K531nMYAAAAjEGvdUUv1UJ6ffOPhlMOxEhNUmHJEQz8FAAAAPA75DfWpqkOJXoluJPrMhyZTd7g</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAIPROvvk/0UiNODvTluvM2QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD4/oiEpRssy7s2Cete4i64AAAAAASAAACgAAAAEAAAAF58GxcvQ9oUGb8RmPN+ldEYAAAAw0ITwsOuzHk7SE7E9tl05XQ0tdCOR/pYFAAAAHzcfmtzTlehfRCugKHrszn4WCfx</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -172,7 +172,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAu7SntGp4Vk+H1AKJplxzMAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADDidCzHg+pPS81f5t5FJ/6AAAAAASAAACgAAAAEAAAAJHdHBaZZaydchae7us68EgYAAAA1yhRVSpn5MBNqE2WvnPxjyFz6L7iCipXFAAAAOSFUEVmRwPTUnLudqjJLhE3RgeT</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAIPROvvk/0UiNODvTluvM2QAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAPdAmy5BpyZxGE6HdCiEHTAAAAAASAAACgAAAAEAAAAESYvSJsvASvYiUPzpcG8qYYAAAAlwBeX4cGTJwjMFxfITcO95rTtAl4smiIFAAAAJ7Q5MNBH2e3mToVZHJ1T8Y464wF</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -10369,7 +10369,7 @@
           PanelSize="531,417"
           Size="531,460"
           Id="Package\Sequence Container"
-          TopLeft="495,604" />
+          TopLeft="494,604" />
         <NodeLayout
           Size="149,42"
           Id="Package\Sequence Container 2\Sequence Container\Brayden Green"

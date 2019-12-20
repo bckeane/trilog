@@ -1,0 +1,810 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20191.19.0916.1542                               -->
+<workbook original-version='18.1' source-build='2019.1.8 (20191.19.0916.1542)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='report' inline='true' name='federated.0ywg3u10rnesa117gq96v1aj5new' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='report' name='textscan.0xqo2hf1b5jpw3108aeyl1ss87np'>
+            <connection class='textscan' directory='C:/Users/keanebr3/Downloads' filename='report.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0xqo2hf1b5jpw3108aeyl1ss87np' name='report.csv' table='[report#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='Make' ordinal='0' />
+            <column datatype='string' name='Model' ordinal='1' />
+            <column datatype='integer' name='Year' ordinal='2' />
+            <column datatype='string' name='Engine' ordinal='3' />
+            <column datatype='string' name='Nickname' ordinal='4' />
+            <column datatype='string' name='License Plate' ordinal='5' />
+            <column datatype='string' name='VIN' ordinal='6' />
+            <column datatype='date' name='Start Date' ordinal='7' />
+            <column datatype='string' name='Start Time' ordinal='8' />
+            <column datatype='string' name='Start Location' ordinal='9' />
+            <column datatype='integer' name='Start Odometer' ordinal='10' />
+            <column datatype='date' name='End Date' ordinal='11' />
+            <column datatype='string' name='End Time' ordinal='12' />
+            <column datatype='string' name='End Location' ordinal='13' />
+            <column datatype='integer' name='End Odometer' ordinal='14' />
+            <column datatype='real' name='Distance Driven' ordinal='15' />
+            <column datatype='integer' name='Time' ordinal='16' />
+            <column datatype='integer' name='Total Idle Time' ordinal='17' />
+            <column datatype='real' name='Max Speed' ordinal='18' />
+            <column datatype='real' name='Average Speed' ordinal='19' />
+            <column datatype='real' name='Average Moving Speed' ordinal='20' />
+            <column datatype='integer' name='Fuel Used' ordinal='21' />
+            <column datatype='integer' name='Fuel Economy' ordinal='22' />
+            <column datatype='string' name='Tags' ordinal='23' />
+            <column datatype='string' name='Geo-Circle' ordinal='24' />
+            <column datatype='integer' name='Speed Alert' ordinal='25' />
+            <column datatype='integer' name='Rapid Acceleration' ordinal='26' />
+            <column datatype='integer' name='Hard Braking' ordinal='27' />
+            <column datatype='integer' name='Curfew' ordinal='28' />
+            <column datatype='integer' name='Fuel Warning' ordinal='29' />
+            <column datatype='integer' name='Distance Driven Alert' ordinal='30' />
+            <column datatype='integer' name='Total Idle Alert' ordinal='31' />
+            <column datatype='integer' name='Idle Event' ordinal='32' />
+            <column datatype='integer' name='Fuel Economy Alert' ordinal='33' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Make</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Make]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Make</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Model</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Model]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Model</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Year]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Engine</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Engine]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Engine</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Nickname</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Nickname]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Nickname</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>License Plate</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[License Plate]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>License Plate</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>VIN</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[VIN]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>VIN</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Start Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Start Date]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Start Date</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Start Time</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Start Time]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Start Time</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Start Location</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Start Location]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Start Location</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Start Odometer</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Start Odometer]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Start Odometer</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>End Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[End Date]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>End Date</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>End Time</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[End Time]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>End Time</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>End Location</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[End Location]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>End Location</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>End Odometer</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[End Odometer]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>End Odometer</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Distance Driven</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Distance Driven]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Distance Driven</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Time</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Time]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Time</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Total Idle Time</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Total Idle Time]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Total Idle Time</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Max Speed</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Max Speed]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Max Speed</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Average Speed</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Average Speed]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Average Speed</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Average Moving Speed</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Average Moving Speed]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Average Moving Speed</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Fuel Used</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Fuel Used]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Fuel Used</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Fuel Economy</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Fuel Economy]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Fuel Economy</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Tags</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Tags]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Tags</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geo-Circle</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Geo-Circle]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Geo-Circle</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Speed Alert</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Speed Alert]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Speed Alert</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Rapid Acceleration</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Rapid Acceleration]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Rapid Acceleration</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Hard Braking</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Hard Braking]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Hard Braking</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Curfew</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Curfew]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Curfew</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Fuel Warning</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Fuel Warning]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Fuel Warning</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Distance Driven Alert</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Distance Driven Alert]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Distance Driven Alert</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Total Idle Alert</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Total Idle Alert]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Total Idle Alert</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Idle Event</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Idle Event]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Idle Event</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Fuel Economy Alert</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Fuel Economy Alert]</local-name>
+            <parent-name>[report.csv]</parent-name>
+            <remote-alias>Fuel Economy Alert</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column datatype='integer' name='[Year]' role='dimension' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.433249' measure-ordering='alphabetic' measure-percentage='0.566751' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>&lt;</run>
+            <run>[federated.0ywg3u10rnesa117gq96v1aj5new].[none:Model:nk]</run>
+            <run>&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='report' name='federated.0ywg3u10rnesa117gq96v1aj5new' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0ywg3u10rnesa117gq96v1aj5new'>
+            <column datatype='real' name='[Average Moving Speed]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Average Speed]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Distance Driven]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Max Speed]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Model]' role='dimension' type='nominal' />
+            <column datatype='date' name='[Start Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Total Idle Time]' role='measure' type='quantitative' />
+            <column-instance column='[Distance Driven]' derivation='Avg' name='[avg:Distance Driven:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Max Speed]' derivation='Max' name='[max:Max Speed:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Average Moving Speed]' derivation='Median' name='[med:Average Moving Speed:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Average Speed]' derivation='Median' name='[med:Average Speed:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Start Date]' derivation='Month' name='[mn:Start Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Model]' derivation='None' name='[none:Model:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Start Date]' derivation='None' name='[none:Start Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Distance Driven]' derivation='Sum' name='[sum:Distance Driven:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Total Idle Time]' derivation='Sum' name='[sum:Total Idle Time:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0ywg3u10rnesa117gq96v1aj5new].[none:Start Date:qk]' included-values='in-range'>
+            <min>#2019-08-11#</min>
+            <max>#2019-10-31#</max>
+          </filter>
+          <slices>
+            <column>[federated.0ywg3u10rnesa117gq96v1aj5new].[none:Start Date:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0ywg3u10rnesa117gq96v1aj5new].[max:Max Speed:qk]' min='65.0' palette='red_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.0ywg3u10rnesa117gq96v1aj5new].[med:Average Speed:qk]' palette='red_blue_diverging_10_0' reverse='true' type='interpolated' />
+            <encoding attr='color' field='[federated.0ywg3u10rnesa117gq96v1aj5new].[med:Average Moving Speed:qk]' palette='red_blue_diverging_10_0' reverse='true' type='interpolated' />
+            <encoding attr='color' field='[federated.0ywg3u10rnesa117gq96v1aj5new].[sum:Distance Driven:qk]' palette='red_blue_diverging_10_0' reverse='true' type='interpolated' />
+            <encoding attr='color' field='[federated.0ywg3u10rnesa117gq96v1aj5new].[sum:Total Idle Time:qk]' palette='red_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.0ywg3u10rnesa117gq96v1aj5new].[avg:Distance Driven:qk]' palette='gray_10_0' reverse='true' type='interpolated' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <lod column='[federated.0ywg3u10rnesa117gq96v1aj5new].[none:Model:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0ywg3u10rnesa117gq96v1aj5new].[max:Max Speed:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0ywg3u10rnesa117gq96v1aj5new].[max:Max Speed:qk]' />
+              <lod column='[federated.0ywg3u10rnesa117gq96v1aj5new].[none:Model:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0ywg3u10rnesa117gq96v1aj5new].[med:Average Moving Speed:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0ywg3u10rnesa117gq96v1aj5new].[med:Average Moving Speed:qk]' />
+              <lod column='[federated.0ywg3u10rnesa117gq96v1aj5new].[none:Model:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0ywg3u10rnesa117gq96v1aj5new].[med:Average Speed:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0ywg3u10rnesa117gq96v1aj5new].[med:Average Speed:qk]' />
+              <lod column='[federated.0ywg3u10rnesa117gq96v1aj5new].[none:Model:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='5' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0ywg3u10rnesa117gq96v1aj5new].[sum:Distance Driven:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0ywg3u10rnesa117gq96v1aj5new].[sum:Distance Driven:qk]' />
+              <lod column='[federated.0ywg3u10rnesa117gq96v1aj5new].[none:Model:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='6' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0ywg3u10rnesa117gq96v1aj5new].[sum:Total Idle Time:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0ywg3u10rnesa117gq96v1aj5new].[sum:Total Idle Time:qk]' />
+              <lod column='[federated.0ywg3u10rnesa117gq96v1aj5new].[none:Model:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='7' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0ywg3u10rnesa117gq96v1aj5new].[avg:Distance Driven:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0ywg3u10rnesa117gq96v1aj5new].[avg:Distance Driven:qk]' />
+              <lod column='[federated.0ywg3u10rnesa117gq96v1aj5new].[none:Model:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0ywg3u10rnesa117gq96v1aj5new].[mn:Start Date:ok]</rows>
+        <cols>([federated.0ywg3u10rnesa117gq96v1aj5new].[sum:Distance Driven:qk] + ([federated.0ywg3u10rnesa117gq96v1aj5new].[avg:Distance Driven:qk] + ([federated.0ywg3u10rnesa117gq96v1aj5new].[max:Max Speed:qk] + ([federated.0ywg3u10rnesa117gq96v1aj5new].[med:Average Speed:qk] + ([federated.0ywg3u10rnesa117gq96v1aj5new].[med:Average Moving Speed:qk] + [federated.0ywg3u10rnesa117gq96v1aj5new].[sum:Total Idle Time:qk])))))</cols>
+      </table>
+      <simple-id uuid='{0CB15E14-5846-4F2C-8C38-0526C1EB14CB}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='7' param='[federated.0ywg3u10rnesa117gq96v1aj5new].[avg:Distance Driven:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='fit-height' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0ywg3u10rnesa117gq96v1aj5new].[none:Model:nk]</field>
+            <field>[federated.0ywg3u10rnesa117gq96v1aj5new].[none:Start Date:qk]</field>
+            <field>[federated.0ywg3u10rnesa117gq96v1aj5new].[yr:Start Date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{3CA16C6C-D844-4F74-A737-78E28B48B2CC}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+      hN7e+u9oz/TBcM+aVhw49qzRfU7yPYDQmgRAaO2Z3A06c/1XLOTLDPYNMDA4yPb2FrN3Jxm9
+      OIpyeTG30vh7B8km1giFghieEMmZWywWyowcPUVPyEOxVCQSGaRUyLNtOaCUw9s7yEDPwb3d
+      L02NMbZU4A9eHcWBYiO+ykDsJJ0BDx/+x49R7iBnz52mQ1XIZzNkVZA+r6I/OkR8fYMj0QES
+      mS3M7S1GTj7Hf//XT8DTydcvnSeVztLdN4DP7SSdXCfU3c96YoNTz53C5TyY3b4PJz7nVgKS
+      93/Lt/7kW5QtF10BF4bhpasrwL/96O959ZtvMLawxguxAfqHY7gMA2NrlV/ciXP55fMU8wUG
+      evxsmR1U8kn6h45w7YP/5IW3/5yor72vz7VKFuf777//fqsLK6WoVqsNn6WUWlul/+gQ96Ym
+      yJYdlEpFfN4OivkM45NTWDVYmryJ0XOM8Ru/Rjk9eJVJ/5FB7n5+nZ7YSdZW7nPjNzdZXlmh
+      alXJZ/KkkxmOHB1ueF6VSgXPPvYkfXb9OplMlkopw/17c5SrBvmag2i4m+RmBjdV0ltFCql1
+      ylWL7p4+5iZucnfuAQ4Dbk0vcGrQx6+u36EvcoRqeZsOqtxfXiPgsYjHkyyvLDBxZ5bsxgaV
+      qomrJ0yXz/7jvt85PS63EWcjm6JiuTHMMnem59iYH6fv5AVCXheF3DqzDwr0e0ssLsyTLcP4
+      3EPOv3CO3MNpbi5s4KuWuDF9F8vc5refj7M0v0A4Okj38AihjsaCbHdOllnmfwHT/8Zy2vX2
+      dAAAAABJRU5ErkJggg==
+    </thumbnail>
+  </thumbnails>
+</workbook>
