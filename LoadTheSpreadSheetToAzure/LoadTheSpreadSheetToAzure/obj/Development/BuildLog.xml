@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>LoadTheSpreadSheetToAzure</Name>
-    <LastWriteTime>2019-06-06T12:43:43.487439Z</LastWriteTime>
+    <LastWriteTime>2020-07-22T14:22:50.719599Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>LoadToAzure.dtsx</Name>
-      <LastWriteTime>2019-12-20T20:54:18.520344Z</LastWriteTime>
+      <LastWriteTime>2020-07-22T14:22:48.012643Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
